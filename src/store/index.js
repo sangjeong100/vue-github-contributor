@@ -3,6 +3,8 @@ import getScale from '../utils/getScale';
 import axis from "axios";
 import dotenv from 'dotenv';
 
+// Vuex 사용 
+
 // .env 파일에서 환경 변수를 로드합니다.
 dotenv.config();
 
