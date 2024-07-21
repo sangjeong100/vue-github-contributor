@@ -4,9 +4,9 @@
         <D3Graph>
             <AreaGraphWrapper :width="width" :height="height" :graphStyle="style" />
         </D3Graph>
-        <!-- <D3Graph>
+        <D3Graph>
             <LineGraphWrapper :width="width" :height="height" :graphStylee="style" />
-        </D3Graph> -->
+        </D3Graph> 
         <D3Graph>
             <RectGraphWrapper :width="width" :height="height" :graphStyle="style" />
         </D3Graph>
@@ -18,6 +18,7 @@
     import D3Graph from "./D3Graph.vue";
     import AreaGraphWrapper from "./AreaGraphWrapper.vue";
     import RectGraphWrapper from "./RectGraphWrapper.vue";
+    import LineGraphWrapper from "./LineGraphWrapper.vue";
     import { useStore } from "../store/useStore";
     import { ref, computed } from "vue";
     import { storeToRefs } from "pinia";

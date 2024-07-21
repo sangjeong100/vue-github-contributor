@@ -29,7 +29,7 @@
 </script>
   
 <style scoped>
-  /* .contents {
+  .contents {
     transform: translate(10px, 10px);
-  } */
+  } 
 </style>
