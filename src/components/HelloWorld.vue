@@ -2,14 +2,14 @@
     <section>
         <InputForm />
         <D3Graph>
-            <AreaGraphWrapper :width="width" :height="height" :graph-style="style" />
+            <AreaGraphWrapper :width="width" :height="height" :graphStyle="style" />
         </D3Graph>
         <!-- <D3Graph>
-            <LineGraphWrapper :width="width" :height="height" :graph-style="style" />
-        </D3Graph>
-        <D3Graph>
-            <RectGraphWrapper :width="width" :height="height" :graph-style="style" />
+            <LineGraphWrapper :width="width" :height="height" :graphStylee="style" />
         </D3Graph> -->
+        <D3Graph>
+            <RectGraphWrapper :width="width" :height="height" :graphStyle="style" />
+        </D3Graph>
     </section>
 </template>
 
@@ -17,6 +17,7 @@
     import InputForm from "./InputForm.vue";
     import D3Graph from "./D3Graph.vue";
     import AreaGraphWrapper from "./AreaGraphWrapper.vue";
+    import RectGraphWrapper from "./RectGraphWrapper.vue";
     import { useStore } from "../store/useStore";
     import { ref, computed } from "vue";
     import { storeToRefs } from "pinia";

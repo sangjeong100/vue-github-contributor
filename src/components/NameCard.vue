@@ -16,8 +16,8 @@
         <div class="card-graph">
             <svg :width="width" :height="height">
                 <Axis
-                    v-for="([key, value], index) of cscale"
-                    :key="index"
+                    v-for="([key, value], index) of cscale.value"
+                    :key="key"
                     :axis="key"
                     :t="`c`"
                 />
@@ -42,7 +42,7 @@
     // 반응형 변수 선언 
     const type = ref("c");
     const show = ref(false);
-    const selectedValue = reactive({});
+    const selectedValue = reactive({a:0, d:0, c:0});
 
     // store 변수 가져오기 
     const { author, carea, cscale, selectedWeeks } = storeToRefs(store);
@@ -71,14 +71,14 @@
     watch(selectedWeeks, (newSelectedWeeks) => {
         // selectedWeeks 배열을 순회하며 누적 값을 계산
         const selectedVal = newSelectedWeeks.reduce((acc, cur, i) => ({
-            a: acc.ㅁ + cur.a,
+            a: acc.a + cur.a,
             d: acc.d + cur.d,
             c: acc.c + cur.c
         }), 
         { a:0, d:0, c:0 } // 초기 누적값 설정 
         );
 
-        selectedValue.value = formatNumber(selectedVal); // 포맷팅된 값을 selectedValue에 할당
+        Object.assign(selectedValue, formatNumber(selectedVal)); // 포맷팅된 값을 selectedValue에 할당
         show.value = selectedVal.c > 0; // 선택된 주의 커밋 수가 0보다 큰 경우 show를 true로 설정
 
     
@@ -90,6 +90,8 @@
         for(let prop in obj) {
             obj[prop] = new Intl.NumberFormat().format(obj[prop]);
         }
+
+        return obj;
     };
 
   

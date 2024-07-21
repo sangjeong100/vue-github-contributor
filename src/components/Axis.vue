@@ -96,7 +96,7 @@ const getAxisTransform = () => {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 /* 축의 스타일 정의 */
 .y line {
   stroke: lightgrey;

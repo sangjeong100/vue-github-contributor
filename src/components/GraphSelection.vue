@@ -165,7 +165,7 @@ const mousedown = (e) => {
  * 선택 영역에서 마우스 버튼을 누를 때 호출되는 함수
  * 선택 영역 이동 및 마우스 이동/버튼 떼기 이벤트 설정
  */
- const selectionMousedown = () => {
+ const selectionMousedown = (e) => {
     const w = d3.select(window); // 윈도우 객체 선택
     const defaultX = e.offsetX - area.value.margin / 2; // 마우스 클릭 위치 계산
     const addX = selectedX.value; // 현재 선택 영역의 시작 위치
@@ -204,7 +204,7 @@ const mousedown = (e) => {
  * 왼쪽 핸들에서 마우스 버튼을 누를 때 호출되는 함수
  * 선택 영역의 왼쪽 경계 이동 및 마우스 이동/버튼 떼기 이벤트 설정
  */
-const handleLeftMousedown = () => {
+const handleLeftMousedown = (e) => {
   const w = d3.select(window); // 윈도우 객체 선택
   const handleType = e.target.dataset.handleType; // 핸들 타입 가져오기
   const addWidth = selectedWidth.value; // 현재 선택 영역의 너비
@@ -242,7 +242,7 @@ const handleLeftMousedown = () => {
  * 오른쪽 핸들에서 마우스 버튼을 누를 때 호출되는 함수
  * 선택 영역의 오른쪽 경계 이동 및 마우스 이동/버튼 떼기 이벤트 설정
  */
-const handleRightMousedown = () => {
+const handleRightMousedown = (e) => {
   const w = d3.select(window); // 윈도우 객체 선택
   const handleType = e.target.dataset.handleType; // 핸들 타입 가져오기
   const addWidth = selectedWidth.value; // 현재 선택 영역의 너비

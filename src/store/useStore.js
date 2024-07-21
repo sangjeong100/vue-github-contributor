@@ -9,6 +9,7 @@ const GITHUB_ACCESS_TOKEN = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 // Pinia store 정의 
 export const useStore = defineStore('main', {
     state: () => ({ 
+            allData: [],
             weeks: [], // 주별 데이터 배열
             total: 0, // 총 커밋 수
             author: {}, // 작성자 정보
@@ -31,9 +32,10 @@ export const useStore = defineStore('main', {
     actions: {
         // 데이터를 설정하는 액션
         setData(data) {
-            this.weeks = data[0].weeks; // 주 데이터를 설정 
-            this.total = data[0].total; // 총 커밋 수를 설정 
-            this.author = data[0].author; // 작성자 정보를 설정 
+            this.allData = data;
+            this.weeks = data[2].weeks; // 주 데이터를 설정 
+            this.total = data[2].total; // 총 커밋 수를 설정 
+            this.author = data[2].author; // 작성자 정보를 설정 
             this.scale = getScale(this.weeks, this, 'area'); // 일반 영역의 스케일을 계산하여 설정
             this.selectedWeeks = this.weeks; // 선택된 주 데이터를 전체 주 데이터로 설정 
             this.cscale = getScale(this.weeks, this, 'carea'); // 압축된 영역의 스케일을 계산하여 설정 
