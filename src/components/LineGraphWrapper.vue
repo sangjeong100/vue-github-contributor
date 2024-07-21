@@ -15,6 +15,7 @@
 <script setup>
 
     import LineGraph from "./LineGraph.vue";
+    import Axis from "./Axis.vue";
     import { useStore } from "../store/useStore";
     import { storeToRefs } from "pinia";
 
