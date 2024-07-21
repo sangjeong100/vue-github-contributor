@@ -1,12 +1,10 @@
 import { defineStore } from 'pinia'; 
 import getScale from '../utils/getScale';
 import axios from "axios";
-import dotenv from 'dotenv';
+
+const GITHUB_ACCESS_TOKEN = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 
 // Pinia 사용 
-
-// .env 파일에서 환경 변수를 로드합니다.
-dotenv.config();
 
 // Pinia store 정의 
 export const useStore = defineStore('main', {
@@ -58,6 +56,7 @@ export const useStore = defineStore('main', {
         },
         // 데이터를 가져오는 액션
         async fetchData(org = 'i-leaders-Sync', repo= 'Sync'){
+
             this.setLoading(true);
             this.setError(null);
 
@@ -68,7 +67,7 @@ export const useStore = defineStore('main', {
                 try {
                     const result = await axios.get(`https://api.github.com/repos/${org}/${repo}/stats/contributors`,{
                         headers: {
-                            Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`
+                            Authorization: `Bearer ${GITHUB_ACCESS_TOKEN}`
                         }
                     });
 
@@ -79,8 +78,9 @@ export const useStore = defineStore('main', {
                         await new Promise(resolve => setTimeout(resolve, backoffTime));
                     } else{
                         const { data } = result;
-                        this.setData = data; // 데이터를 커밋하여 상태를 업데이트 
+                        this.setData(data); // 데이터를 커밋하여 상태를 업데이트 
                         this.setLoading(false);
+                        return;
                     }
 
                 } catch(e) {

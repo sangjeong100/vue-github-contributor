@@ -1,18 +1,14 @@
 <template>
-  <div id="app"><Container/></div>
+  <div id="app"><HelloWorld /></div>
 </template>
 
 
-<script>
 
-import Container from "./components/Container.vue";
+<script setup>
 
-export default {
-  name: "App", // 컴포넌트 명칭 지정 
-  components: {
-    Container
-  },
-}
+import HelloWorld from "./components/HelloWorld.vue";
+
+
 </script>
 
 
@@ -30,5 +26,4 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
 </style>

@@ -7,7 +7,7 @@
 // Vue Composition API에서 사용하는 ref, computed, watch, onMounted 함수를 임포트합니다.
 import { ref, computed, watch, onMounted } from 'vue';
 import * as d3 from "d3";
-import { useStore } from "../useStore";
+import { useStore } from "../store/useStore";
 import { storeToRefs } from "pinia";
 
 // props 선언 
