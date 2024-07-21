@@ -39,7 +39,7 @@ const fill = computed(() => {
 
 // weeks 데이터가 변경될 때마다 render 함수를 호출하여 경로를 재생성합니다.
 watch(weeks, (newWeeks) => {
-    if(!props.t) render(newWeeks);  // props.t가 없으면 주 데이터를 사용하여 경로를 생성합니다.
+    render(newWeeks);  // props.t가 없으면 주 데이터를 사용하여 경로를 생성합니다.
 })
 
 // render 함수는 D3 라이브러리를 사용하여 주어진 데이터로 SVG 경로를 생성합니다.

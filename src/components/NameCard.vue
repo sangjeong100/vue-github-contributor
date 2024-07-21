@@ -16,7 +16,7 @@
         <div class="card-graph">
             <svg :width="width" :height="height">
                 <Axis
-                    v-for="([key, value], index) of cscale.value"
+                    v-for="([key, value], index) of cscale"
                     :key="key"
                     :axis="key"
                     :t="`c`"

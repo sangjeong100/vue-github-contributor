@@ -1,6 +1,6 @@
 <template>
     <!-- SVG 요소 내에 축을 그리기 위한 그룹 요소 -->
-    <g :class="axis" :style="style" ref="axis"></g>
+    <g :class="props.axis" :style="style" ref="axisRef"></g>
 </template>
 
 <script setup>
@@ -38,19 +38,17 @@ const style = computed(() =>{
 
 // areaType computed 정의 
 const currentArea = computed(() => {
-    //return props.t? props.t + "area" : "area";
     return props.t? carea.value : area.value;
 });
 
 // currentArea computed 정의 
 const currentScale = computed(() => {
-    //return props.t? props.t + "scale" : "scale";
+
     return props.t? cscale.value : scale.value;
 });
 
 // cscale 데이터가 변경될 때마다 render 함수를 호출하여 축을 재생성
 watch(cscale, (newScale) => {
-    //render(currentScale.value);
     render(newScale);
 });
 

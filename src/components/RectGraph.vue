@@ -49,7 +49,7 @@
 </script>
 
 <style lang="scss" scoped>
-.rect {
-    fill: #41b883;
-}
+// .rect {
+//     fill: #41b883;
+// }
 </style>

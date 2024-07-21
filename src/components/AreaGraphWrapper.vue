@@ -4,7 +4,7 @@
         <h4>{{ period }}</h4>
         <svg :width="props.width" :height="props.height">
              <!-- 각 축(Axis) 컴포넌트 렌더링 -->
-            <Axis v-for="([key, value], index) of scale.value" :key="key" :axis="key" />
+            <Axis v-for="([key, value], index) of scale" :key="key" :axis="key" />
             <!-- 그래프 내용 및 선택 영역을 포함하는 그룹 -->
             <g class="contents" :style="props.graphStyle">
                 <AreaGraph />
