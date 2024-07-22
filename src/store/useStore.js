@@ -9,7 +9,6 @@ const GITHUB_ACCESS_TOKEN = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 // Pinia store 정의 
 export const useStore = defineStore('main', {
     state: () => ({ 
-            allData: [],
             weeks: [], // 주별 데이터 배열
             total: 0, // 총 커밋 수
             author: {}, // 작성자 정보
@@ -28,14 +27,17 @@ export const useStore = defineStore('main', {
             selectedWeeks: [], // 선택된 주 데이터 배열
             isLoading: false, // 데이터 로딩 상태
             error: null, // 에러 메시지
+            contributors: [] // 기여자 리스트 추가
     }),
     actions: {
         // 데이터를 설정하는 액션
         setData(data) {
-            this.allData = data;
-            this.weeks = data[2].weeks; // 주 데이터를 설정 
-            this.total = data[2].total; // 총 커밋 수를 설정 
-            this.author = data[2].author; // 작성자 정보를 설정 
+
+            console.log(data);
+
+            this.weeks = data.weeks; // 주 데이터를 설정 
+            this.total = data.total; // 총 커밋 수를 설정 
+            this.author = data.author; // 작성자 정보를 설정 
             this.scale = getScale(this.weeks, this, 'area'); // 일반 영역의 스케일을 계산하여 설정
             this.selectedWeeks = this.weeks; // 선택된 주 데이터를 전체 주 데이터로 설정 
             this.cscale = getScale(this.weeks, this, 'carea'); // 압축된 영역의 스케일을 계산하여 설정 
@@ -55,6 +57,9 @@ export const useStore = defineStore('main', {
         // 로딩 상태를 설정하는 액션 
         setLoading(isLoading) {
             this.isLoading = isLoading;
+        },
+        setContributors(contributors) {
+            this.contributors = contributors;
         },
         // 데이터를 가져오는 액션
         async fetchData(org = 'i-leaders-Sync', repo= 'Sync'){
@@ -80,7 +85,7 @@ export const useStore = defineStore('main', {
                         await new Promise(resolve => setTimeout(resolve, backoffTime));
                     } else{
                         const { data } = result;
-                        this.setData(data); // 데이터를 커밋하여 상태를 업데이트 
+                        this.setContributors(data); // 데이터를 커밋하여 상태를 업데이트 
                         this.setLoading(false);
                         return;
                     }
@@ -100,4 +105,11 @@ export const useStore = defineStore('main', {
             }
         }
     }
-});
+},{
+    persist: { 
+        // npm i pinia-plugin-persist
+        enabled: true,
+        strategies: [{ storage: localStorage }],
+      },
+}
+);

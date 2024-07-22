@@ -14,8 +14,10 @@
     "dotenv": "^16.4.5",
     "env": "^0.0.2",
     "pinia": "^2.1.7",
+    "pinia-plugin-persist": "^1.0.0",
     "typescript": "^5.5.3",
     "vue": "^3.4.29",
+    "vue-router": "^4.0.13",
     "vuex": "^4.1.0"
   },
   "devDependencies": {

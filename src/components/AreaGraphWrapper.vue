@@ -13,7 +13,7 @@
             <GraphSelection />
         </svg>
         <!-- 명함(NameCard) 컴포넌트 -->
-        <NameCard />
+        <!-- <NameCard /> -->
     </article>
 </template>
 
